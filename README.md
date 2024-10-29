@@ -21,14 +21,6 @@ I’m intrigued working with complex datasets and building models for efficient 
 <img src="https://raw.githubusercontent.com/Samaksh6969/Samaksh6969/output/snake.svg" alt="Snake animation" />
 </div>
 
-
-### 📊 GitHub Stats
-![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=kruzee07&theme=gruvbox)
-
-
-### 📫 Social
-
-
 ### 🛠️ Skills & Technologies
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Java](https://img.shields.io/badge/Java-007396?style=flat-square&logo=java&logoColor=white)
@@ -44,3 +36,7 @@ I’m intrigued working with complex datasets and building models for efficient 
 ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
 ![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node-dot-js&logoColor=white)
+
+### 📊 GitHub
+![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=kruzee07&theme=gruvbox)
+
