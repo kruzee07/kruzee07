@@ -12,6 +12,10 @@ I’m intrigued working with complex datasets and building models for efficient 
 <img>
 
 
+### 📊 GitHub Stats
+![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=kruzee07&theme=gruvbox)
+
+
 ### 📫 Social
 [![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:krutarthghuge@gmail.com)
 ![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=linkedin&labelColor=blue&link=https://www.linkedin.com/in/krutarth-ghuge-67b611184/)
