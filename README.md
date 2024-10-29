@@ -18,7 +18,7 @@ I’m intrigued working with complex datasets and building models for efficient 
 
 <div>
 <br clear="both">
-<img src="https://raw.githubusercontent.com/Samaksh6969/Samaksh6969/output/snake.svg" alt="Snake animation" />
+<img src="https://raw.githubusercontent.com/kruzee07/kruzee07/output/snake.svg" alt="Snake animation" />
 </div>
 
 ### 🛠️ Skills & Technologies
