@@ -9,7 +9,10 @@ I’m intrigued working with complex datasets and building models for efficient 
 🎯 My utlimate goal is to successfully build a model that can redefine Banking, and I’m creatively looking for ways to do so.
 😴 When I'm not coding, I'm eating or sleeping (P.S. If I'm asleep I most probably ate before).
 
-<img>
+<div>
+<br clear="both">
+<img src="https://raw.githubusercontent.com/Samaksh6969/Samaksh6969/output/snake.svg" alt="Snake animation" />
+</div>
 
 
 ### 📊 GitHub Stats
