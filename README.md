@@ -12,7 +12,7 @@ I’m intrigued working with complex datasets and building models for efficient 
 🔭 I’m currently working on a research project on decrypting hashed codes.
 💰 I’m learning Financial Analysis to enhance my skills in the Finance sector.
 🎯 My utlimate goal is to successfully build a model that can redefine Banking, and I’m creatively looking for ways to do so.
-😴 When I'm not coding, I'm eating or sleeping (P.S. If I'm asleep I most probably ate before).
+😴 When I'm not coding, I'm sleeping.
 
 <div>
 <br clear="both">
