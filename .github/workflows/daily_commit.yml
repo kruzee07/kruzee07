@@ -22,8 +22,8 @@ jobs:
       run: |
         # Generate a random number
         RANDOM_NUMBER=$((RANDOM % 1000))
-        # Get the current timestamp
-        TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
+        # Get the current timestamp in Eastern Time (with EST/EDT based on daylight savings) 
+        TIMESTAMP=$(TZ="America/New_York" date +"%Y-%m-%d %H:%M:%S %Z")
         # Create a unique daily message
         COMMIT_MESSAGE="Commit made at $TIMESTAMP with random number: $RANDOM_NUMBER"
         # Make sure the message is not empty
