@@ -29,9 +29,15 @@ jobs:
         # Get the current day of the week (1-7, Monday-Sunday)
         DAY_OF_WEEK=$(date +'%u')  # 1 for Monday, 7 for Sunday
 
+        # Skip commit on Sunday
+        if [ "$DAY_OF_WEEK" -eq 7 ]; then
+          echo "It's Sunday, skipping commits."
+          exit 0
+        fi
+
         # Generate base multiplier based on day of the week
-        if [ "$DAY_OF_WEEK" -eq 1 ] || [ "$DAY_OF_WEEK" -eq 3 ] || [ "$DAY_OF_WEEK" -eq 5 ] || [ "$DAY_OF_WEEK" -eq 7 ]; then
-          BASE_MULTIPLIER=3  # Monday, Wednesday, Friday, Sunday
+        if [ "$DAY_OF_WEEK" -eq 1 ] || [ "$DAY_OF_WEEK" -eq 3 ] || [ "$DAY_OF_WEEK" -eq 5 ]; then
+          BASE_MULTIPLIER=3  # Monday, Wednesday, Friday
         else
           BASE_MULTIPLIER=2  # Tuesday, Thursday, Saturday
         fi
