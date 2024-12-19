@@ -17,7 +17,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # Step 2: Modify a file with dynamic content
+    # Step 2: Set up Git identity
+    - name: Set up Git identity
+      run: |
+        git config --global user.email "github-actions@github.com"
+        git config --global user.name "GitHub Actions Bot"
+
+    # Step 3: Modify a file with dynamic content
     - name: Modify file with dynamic content
       run: |
         # Get the current day of the week (1-7, Monday-Sunday)
@@ -52,7 +58,7 @@ jobs:
           git commit -m "$COMMIT_MESSAGE"
         done
 
-    # Step 3: Push changes
+    # Step 4: Push changes
     - name: Push changes
       run: |
         git push
