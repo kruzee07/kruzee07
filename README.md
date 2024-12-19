@@ -35,6 +35,3 @@ I’m intrigued working with complex datasets and building models for efficient 
 ![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node-dot-js&logoColor=white)
 
-### 📊 GitHub
-![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=kruzee07&theme=gruvbox)
-
