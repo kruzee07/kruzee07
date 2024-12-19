@@ -2,11 +2,11 @@ name: Daily Commit
 
 on:
   schedule:
-    - cron: '0 0 * * *'
-  workflow_dispatch:
+    - cron: '0 0 * * *'  # Runs daily at midnight UTC
+  workflow_dispatch:  # Allows manual trigger
 
 permissions:
-  contents: write # Grant write permissions to push changes
+  contents: write  # Grant write permissions to push changes
 
 jobs:
   commit:
@@ -17,11 +17,16 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # Step 2: Make a non-monotonic change to a file
+    # Step 2: Make a dynamic change to a file
     - name: Modify a file
       run: |
+        # Generate a random number
         RANDOM_NUMBER=$((RANDOM % 1000))
-        echo "Random update: $RANDOM_NUMBER on $(date)" >> auto_commit_log.txt
+        # Get the current timestamp
+        TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
+        # Create a unique daily message
+        COMMIT_MESSAGE="Commit made at $TIMESTAMP with random number: $RANDOM_NUMBER"
+        echo "$COMMIT_MESSAGE" >> auto_commit_log.txt
 
     # Step 3: Configure Git and commit
     - name: Commit changes
@@ -29,5 +34,5 @@ jobs:
         git config --global user.name "GitHub Actions Bot"
         git config --global user.email "actions@github.com"
         git add auto_commit_log.txt
-        git commit -m "Randomized commit on $(date): $RANDOM_NUMBER"
+        git commit -m "$COMMIT_MESSAGE"
         git push
