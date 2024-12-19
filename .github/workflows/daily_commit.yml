@@ -53,7 +53,7 @@ jobs:
           RANDOM_NUMBER=$((RANDOM % 1000))
           TIMESTAMP=$(TZ="America/New_York" date +"%Y-%m-%d %H:%M:%S %Z")
           COMMIT_MESSAGE="Commit $i made at $TIMESTAMP with random number: $RANDOM_NUMBER"
-          echo "$COMMIT_MESSAGE" >> auto_commit_log.txt
+          echo "$COMMIT_MESSAGE" > auto_commit_log.txt
           git add auto_commit_log.txt
           git commit -m "$COMMIT_MESSAGE"
         done
