@@ -1,4 +1,4 @@
-name: Daily Commit
+name: Dynamic Daily Commit
 
 on:
   schedule:
@@ -17,24 +17,42 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # Step 2: Make a dynamic change to a file
-    - name: Modify a file
+    # Step 2: Modify a file with dynamic content
+    - name: Modify file with dynamic content
       run: |
-        # Generate a random number
-        RANDOM_NUMBER=$((RANDOM % 1000))
-        # Get the current timestamp in Eastern Time (with EST/EDT based on daylight savings) 
-        TIMESTAMP=$(TZ="America/New_York" date +"%Y-%m-%d %H:%M:%S %Z")
-        # Create a unique daily message
-        COMMIT_MESSAGE="Commit made at $TIMESTAMP with random number: $RANDOM_NUMBER"
-        # Make sure the message is not empty
-        echo "$COMMIT_MESSAGE" >> auto_commit_log.txt
+        # Get the current day of the week (1-7, Monday-Sunday)
+        DAY_OF_WEEK=$(date +'%u')  # 1 for Monday, 7 for Sunday
 
-    # Step 3: Configure Git and commit
-    - name: Commit changes
+        # Generate base multiplier based on day of the week
+        if [ "$DAY_OF_WEEK" -eq 1 ] || [ "$DAY_OF_WEEK" -eq 3 ] || [ "$DAY_OF_WEEK" -eq 5 ] || [ "$DAY_OF_WEEK" -eq 7 ]; then
+          BASE_MULTIPLIER=3  # Monday, Wednesday, Friday, Sunday
+        else
+          BASE_MULTIPLIER=2  # Tuesday, Thursday, Saturday
+        fi
+
+        # Get the current date (day of the month)
+        DAY_OF_MONTH=$(date +'%d')
+
+        # Check if the day is even or odd
+        if [ $((DAY_OF_MONTH % 2)) -eq 0 ]; then
+          # Even day -> multiply by 3
+          NUM_COMMITS=$((BASE_MULTIPLIER * 3))
+        else
+          # Odd day -> multiply by 4
+          NUM_COMMITS=$((BASE_MULTIPLIER * 4))
+        fi
+
+        # Loop to make multiple commits
+        for i in $(seq 1 $NUM_COMMITS); do
+          RANDOM_NUMBER=$((RANDOM % 1000))
+          TIMESTAMP=$(TZ="America/New_York" date +"%Y-%m-%d %H:%M:%S %Z")
+          COMMIT_MESSAGE="Commit $i made at $TIMESTAMP with random number: $RANDOM_NUMBER"
+          echo "$COMMIT_MESSAGE" >> auto_commit_log.txt
+          git add auto_commit_log.txt
+          git commit -m "$COMMIT_MESSAGE"
+        done
+
+    # Step 3: Push changes
+    - name: Push changes
       run: |
-        git config --global user.name "GitHub Actions Bot"
-        git config --global user.email "actions@github.com"
-        git add auto_commit_log.txt
-        # Ensure COMMIT_MESSAGE is not empty
-        git commit -m "${COMMIT_MESSAGE:-'Default commit message'}"
         git push
