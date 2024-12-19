@@ -2,8 +2,11 @@ name: Daily Commit
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Runs daily at midnight UTC
-  workflow_dispatch: # Allows manual trigger
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write # Grant write permissions to push changes
 
 jobs:
   commit:
