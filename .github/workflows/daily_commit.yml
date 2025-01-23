@@ -35,24 +35,27 @@ jobs:
           exit 0
         fi
 
-        # Generate base multiplier based on day of the week
-        if [ "$DAY_OF_WEEK" -eq 1 ] || [ "$DAY_OF_WEEK" -eq 3 ] || [ "$DAY_OF_WEEK" -eq 5 ]; then
-          BASE_MULTIPLIER=3  # Monday, Wednesday, Friday
-        else
-          BASE_MULTIPLIER=2  # Tuesday, Thursday, Saturday
-        fi
+        # Assign multipliers for each day
+        case $DAY_OF_WEEK in
+          1|4) BASE_MULTIPLIER=3 ;;  # Monday, Thursday
+          2) BASE_MULTIPLIER=5 ;;    # Tuesday
+          3) BASE_MULTIPLIER=2 ;;    # Wednesday
+          5|6) BASE_MULTIPLIER=4 ;;  # Friday, Saturday
+        esac
 
         # Get the current date (day of the month)
         DAY_OF_MONTH=$(date +'%d')
 
-        # Check if the day is even or odd
-        if [ $((DAY_OF_MONTH % 2)) -eq 0 ]; then
-          # Even day -> multiply by 3
-          NUM_COMMITS=$((BASE_MULTIPLIER * 3))
-        else
-          # Odd day -> multiply by 4
-          NUM_COMMITS=$((BASE_MULTIPLIER * 4))
-        fi
+        # Determine commit count based on the sequence of dates
+        SEQUENCE=$(( (DAY_OF_MONTH - 1) % 3 ))
+        case $SEQUENCE in
+          0) DATE_MULTIPLIER=4 ;;  # 1, 4, 7...
+          1) DATE_MULTIPLIER=8 ;;  # 2, 5, 8...
+          2) DATE_MULTIPLIER=3 ;;  # 3, 6, 9...
+        esac
+
+        # Calculate the total number of commits
+        NUM_COMMITS=$((BASE_MULTIPLIER * DATE_MULTIPLIER))
 
         # Loop to make multiple commits
         for i in $(seq 1 $NUM_COMMITS); do
