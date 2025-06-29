@@ -40,7 +40,7 @@ jobs:
           RAND_MULTIPLIER=$(( (RANDOM % 5) + 1 ))
 
           # Final number of commits
-          NUM_COMMITS=$(( FIB_MULTIPLIER * RAND_MULTIPLIER * DAY_OF_MONTH ))
+          NUM_COMMITS=$(( FIB_MULTIPLIER * RAND_MULTIPLIER))
 
           echo "Date: $TODAY"
           echo "Fibonacci Multiplier: $FIB_MULTIPLIER"
