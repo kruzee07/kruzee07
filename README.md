@@ -1,11 +1,11 @@
-## 👋 Hi there! I'm Krutarth!
+## 👋 'Sup! I'm Krutarth!
 
 [![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:krutarthghuge@gmail.com)
 ![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=linkedin&labelColor=blue&link=https://www.linkedin.com/in/krutarth-ghuge-67b611184/)
 ![Twitter](https://img.shields.io/badge/Twitter-blue?style=flat-square&logo=twitter&labelColor=blue&link=https://x.com/krutarth_ghuge)
 
 
-I recently completed my undegraduate education from Trent University, Canada with a Bachelor of Science Honours in Computer Science, Specialization in Data Analytics, and a Minor in Economics.
+Looking to combine the world of investment banking and computer science.
 I’m intrigued working with complex datasets and building models for efficient computing.
 😴 When I'm not coding, I'm sleeping.
 
