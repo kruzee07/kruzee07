@@ -7,7 +7,6 @@
 
 Looking to combine the world of investment banking and computer science.
 I’m intrigued working with complex datasets and building models for efficient computing.
-😴 When I'm not coding, I'm sleeping.
 
 <div>
 <br clear="both">
