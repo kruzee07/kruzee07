@@ -30,7 +30,7 @@ jobs:
 
       - name: Set up Git identity
         run: |
-          git config --global user.email "krutarthghuge@trentu.ca"
+          git config --global user.email "123106006+kruzee07@users.noreply.github.com"
           git config --global user.name "GitHub Commit Bot"
 
       - name: Make today's commits
