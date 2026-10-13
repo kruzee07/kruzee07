@@ -31,7 +31,7 @@ DAILY_MOVE = 0.015  # a day at twice the average count moves the price 1.5%
 
 # Animation
 WINDOW = 90       # candles visible at once
-STEP = 0.15       # seconds per day of panning
+STEP = 0.22       # seconds per day of panning
 HOLD = 4.0        # seconds to rest on the latest candle before looping
 ZOOM_TIME = 0.5   # seconds for the price axis to rescale
 MA_DAYS = 20
