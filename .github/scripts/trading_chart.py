@@ -6,8 +6,8 @@ Each day of the contribution calendar is one candle:
   close  = open moved up or down by how that day's contribution count compares
            with the year's daily average
   volume = that day's contribution count
-  wicks  = a fixed styling rule (GitHub only gives one number per day), scaled
-           by the day's volume and seeded by the date so rebuilds look the same
+  high   = above the open and close, wider on busier days
+  low    = below the open and close, wider on busier days
 
 The chart shows a 90-day window that pans across the year, auto-scaling its
 price axis as highs and lows enter and leave the window.
