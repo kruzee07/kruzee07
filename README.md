@@ -10,7 +10,11 @@ I’m intrigued working with complex datasets and building models for efficient 
 
 <div>
 <br clear="both">
-<img src="https://raw.githubusercontent.com/kruzee07/kruzee07/output/snake.svg" alt="Snake animation" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/kruzee07/kruzee07/output/trading-chart-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/kruzee07/kruzee07/output/trading-chart-light.svg" />
+  <img src="https://raw.githubusercontent.com/kruzee07/kruzee07/output/trading-chart-dark.svg" alt="Candlestick chart of my daily GitHub contributions" />
+</picture>
 </div>
 
 ### 🛠️ Skills & Technologies
