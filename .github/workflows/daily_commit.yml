@@ -1,12 +1,22 @@
 name: Dynamic Daily Commits
 
+# Fills the contribution graph so that the empty days spell "KRUZEE".
+# The pattern lives in .github/scripts/kruzee_pattern.py.
+# It runs three times a day so a dropped scheduled run doesn't leave a hole.
+# Only the first successful run each UTC day makes commits.
 on:
   schedule:
-    - cron: "0 0 * * *" # Runs daily at midnight UTC
+    - cron: "5 0 * * *"
+    - cron: "5 8 * * *"
+    - cron: "5 16 * * *"
   workflow_dispatch: # Allows manual trigger
 
 permissions:
   contents: write
+
+concurrency:
+  group: daily-commit
+  cancel-in-progress: false
 
 jobs:
   commit:
@@ -14,39 +24,34 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 200 # enough history to see today's bot commits
 
       - name: Set up Git identity
         run: |
           git config --global user.email "krutarthghuge@trentu.ca"
           git config --global user.name "GitHub Commit Bot"
 
-      - name: Generate Fibonacci-based commits
+      - name: Make today's commits
+        env:
+          TZ: UTC
         run: |
-          # Start date for tracking weeks (YYYY-MM-DD)
-          START_DATE="2025-05-30"
           TODAY=$(date +'%Y-%m-%d')
-          DAY_OF_MONTH=$(date +'%d' | sed 's/^0*//')  # Remove leading zeros
 
-          # Calculate number of full weeks since start date
-          DAYS_PASSED=$(( ( $(date -d "$TODAY" +%s) - $(date -d "$START_DATE" +%s) ) / 86400 ))
-          WEEK_INDEX=$(( (DAYS_PASSED / 7) % 7 ))
+          if git log --author="GitHub Commit Bot" --date=format-local:%Y-%m-%d --format=%ad | grep -qx "$TODAY"; then
+            echo "Already committed for $TODAY, nothing to do."
+            exit 0
+          fi
 
-          # Fibonacci sequence [1, 1, 2, 3, 5, 8, 13]
-          FIB_SEQ=(1 1 2 3 5 8 13)
-          FIB_MULTIPLIER=${FIB_SEQ[$WEEK_INDEX]}
-
-          # Random multiplier between 1 and 5
-          RAND_MULTIPLIER=$(( (RANDOM % 5) + 1 ))
-
-          # Final number of commits
-          NUM_COMMITS=$(( FIB_MULTIPLIER * RAND_MULTIPLIER))
-
+          NUM_COMMITS=$(python3 .github/scripts/kruzee_pattern.py --date "$TODAY")
           echo "Date: $TODAY"
-          echo "Fibonacci Multiplier: $FIB_MULTIPLIER"
-          echo "Random Multiplier: $RAND_MULTIPLIER"
-          echo "Day of Month: $DAY_OF_MONTH"
           echo "Total Commits: $NUM_COMMITS"
+
+          if [ "$NUM_COMMITS" -eq 0 ]; then
+            echo "$TODAY is part of a letter, leaving it empty."
+            exit 0
+          fi
 
           for i in $(seq 1 $NUM_COMMITS); do
             RANDOM_NUMBER=$((RANDOM % 1000))
@@ -58,4 +63,9 @@ jobs:
           done
 
       - name: Push changes
-        run: git push
+        run: |
+          for attempt in 1 2 3; do
+            git push && exit 0
+            git pull --rebase
+          done
+          exit 1
