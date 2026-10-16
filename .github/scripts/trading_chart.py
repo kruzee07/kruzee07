@@ -13,7 +13,7 @@ The chart shows a 90-day window that pans across the year, auto-scaling its
 price axis as highs and lows enter and leave the window.
 
 Usage:
-  GITHUB_TOKEN=... trading_chart.py --login kruzee07 --out dist
+  GITHUB_TOKEN=... trading_chart.py --login kruzxee --out dist
   trading_chart.py --data calendar.json --out dist   (offline, [[date, count], ...])
 """
 import argparse
